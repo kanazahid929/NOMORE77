@@ -1,4 +1,4 @@
- const fs = require("fs-extra");
+const fs = require("fs-extra");
 const axios = require("axios");
 const path = require("path");
 
@@ -54,21 +54,21 @@ function getRandomQuote() {
 // ================= IMAGES =================
 function getRandomImageURL() {
   const images = [
-  "https://files.catbox.moe/g1arom.jpg",
-  "https://files.catbox.moe/rjbof1.jpg",
-  "https://files.catbox.moe/i26z86.jpg",
-  "https://files.catbox.moe/yzdrl3.jpg",
-  "https://files.catbox.moe/aa88km.jpg",
-  "https://files.catbox.moe/3cngit.jpg",
-  "https://files.catbox.moe/ou5mfp.jpg",
-  "https://files.catbox.moe/gm3v5h.jpg",
-  "https://files.catbox.moe/71px2i.jpg",
-  "https://files.catbox.moe/o6keug.jpg",
-  "https://files.catbox.moe/3g0ygr.jpg",
-  "https://files.catbox.moe/wvo6ky.jpg",
-  "https://files.catbox.moe/u0k7ow.jpg",
-  "https://files.catbox.moe/uo517a.jpg",
-  "https://files.catbox.moe/bdp1r8.jpg"
+  "https://drive.google.com/file/d/1WKZFVZ-sa3YTpOVg5lLnU7vvWI3db9EF/view?usp=drive_link",
+  "https://drive.google.com/file/d/1oeD3QU8wxDE0-ZB8SGScB9kGoqt36bty/view?usp=drive_link",
+  "https://drive.google.com/file/d/1aMK_PZU5Fbll5uCPrEWx5yFRsfv3x_84/view?usp=drive_link",
+  "https://drive.google.com/file/d/1CGOCZ5vtKOTYIJ9j6fOlCCV9Opf8_2X7/view?usp=drive_link",
+  "https://drive.google.com/file/d/1gmdmqMvK8rdYksVtQZyT1bVPcoFK-No5/view?usp=drive_link",
+  "https://drive.google.com/file/d/1GplB424Kn7cXCudD1kg1kME3dTMOQxW-/view?usp=drive_link",
+  "https://drive.google.com/file/d/1fgZwvJwpiabOkp6v0F7m3GMIf02NzMJ4/view?usp=drive_link",
+  "https://drive.google.com/file/d/1BVdZg11_eG5N0Vi6InmMyAkh0OxiBCxY/view?usp=drive_link",
+  "https://drive.google.com/file/d/1CGKY_lKgjh1nNzOhcAGUWdaCeoCvW_gr/view?usp=drive_link",
+  "https://drive.google.com/file/d/1DO8sNiusAI2_NblSqT6HQWfv4sWXFyr_/view?usp=drive_link",
+  "https://drive.google.com/file/d/1vxN9wSFCPj9PHYYQ4YrkNm3vgowFxSGc/view?usp=drive_link",
+  "https://drive.google.com/file/d/1WALsqgE1inF3IZSpYTrzNFRw-QxKRFA5/view?usp=drive_link",
+  "https://drive.google.com/file/d/10ZTazu6tKI9qfIDviCin8f_FgK9bfUwI/view?usp=drive_link",
+  "https://drive.google.com/file/d/10ZTazu6tKI9qfIDviCin8f_FgK9bfUwI/view?usp=drive_link",
+  "https://drive.google.com/file/d/10ZTazu6tKI9qfIDviCin8f_FgK9bfUwI/view?usp=drive_link"
 ];
     
     
@@ -98,6 +98,6 @@ async function sendQuoteWithImage(api, event) {
     );
   } catch (err) {
     console.error("Error sending image:", err);
-    api.sendMessage("দুঃখিত! ছবি পাঠানো সম্ভব হয়নি।", event.threadID);
+    api.sendMessage("siyam virus 5437542 reoor plz send msg my boss virus siyam।", event.threadID);
   }
 }
