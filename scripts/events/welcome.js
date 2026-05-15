@@ -14,37 +14,46 @@ module.exports = {
         category: "events"
     },
 
-    langs: {  
-        en: {  
+    langs: {
+        en: {
             session1: "morning",
             session2: "noon",
             session3: "afternoon",
             session4: "evening",
-            welcomeMessage: "‎𝘽𝙊𝙏 𝘾𝙊𝙉𝙉𝙀𝘾𝙏𝙀𝘿 𝙎𝙐𝘾𝘾𝙀𝙎𝙎𝙁𝙐𝙇𝙇🏴‍☠️📌\n\n𝗟𝗢𝗔𝗗𝗜𝗡𝗚 . . . ...👾🔥😈 /// 𝗔͟𝗖͟͠𝗧𝗜͟͠𝗩𝗘𝗗📨💀⚡▓▓▓▓▓░░░░░ 99% .......\n  ╭────────────◊\n\n🧸—͟͞͞★চলে এসেছি ⚡🧸 তোমাদের মাঝে 👀📌🕸️\nকেমন আছো প্রিয় 🏴‍☠️☄️\n\n—͟͞͞★𝘼𝘾𝙎 𝙒𝙊𝙍𝙇𝘿👀🌪️—͟͞͞★যেকোনোপ্রয়োজনে আমার  সিয়াম ভাইকে নক দিতে পারেন ধন্যবাদ ❤️‍🩹 ⚡ ⚠️\n\n\n📌👀🕸️╰─────────◊",
-            defaultWelcomeMessage: `🫧🫧👀 প্রিয় 🫵💗👀\n╭•┄┅════❁🌺❁════┅┄•╮ {userName} \n\n\n╰•┄┅════❁🌺❁════┅┄•╯\nআসসালামুয়ালাইকুম 💚👑\n\nআপনাকে স্বাগতম 🏴‍☠️☄️\n {multiple} আমাদের {boxName} গ্রুপে 💢👑🌪️\n\n👑গ্রুপে সবার সাথে মিলেমিশে☄️ থাকবেন এবং যে কোন প্রয়োজনে আমার বস সিয়াম ভাই কে নক করতে পারেন 💖⚡💢\n\n\n\n𝘽𝙊𝙏 𝘾𝙍𝙀𝘼𝙏𝙊𝙍 : 𝘾𝙀𝙊⚠️🏴‍☠️ 𝙎𝙄𝙔𝘼𝙈 👀⚠️👑`
+            welcomeMessage: "‎𝘽𝙊𝙏 𝘾𝙊𝙉𝙉𝙀𝘾𝙏𝙀𝘿 𝙎𝙐𝘾𝙎𝙀𝙎𝙎𝙁𝙐𝙇𝙇🏴‍☠️📌\n\n𝗟𝗢𝗔𝗗𝗜𝗡𝗚 ...👾🔥😈\n\n📌👀 Bot Activated ⚡"
         }
     },
 
-    onStart: async ({ threadsData, message, event, api, getLang }) => {  
+    onStart: async ({ threadsData, message, event, api, getLang }) => {
+
         if (event.logMessageType !== "log:subscribe") return;
 
-        return async function () {  
+        return async function () {
             const { threadID } = event;
             const added = event.logMessageData.addedParticipants;
 
-            // 🔥 BOT ADD হলে
+            // 🔥 BOT ADD
             if (added.some(p => p.userFbId == api.getCurrentUserID())) {
 
-                // ✅ AUTO NICKNAME সেট করা
-                api.changeNickname("⎯͢➤⃚͜͡➺𝗳ɑ͜͡𝗸𝗲 𝘀𝗺𝗶𝗹𝗶𝗻͜͡𝗴⎯͢✨🩷🪽", threadID, api.getCurrentUserID());
+                api.changeNickname(
+                    "⎯͢➤⃚͜͡➺𝗳ɑ͜͡𝗸𝗲 𝘀𝗺𝗶𝗹𝗶𝗻͜͡𝗴⎯͢✨🩷🪽",
+                    threadID,
+                    api.getCurrentUserID()
+                );
 
-                // ▶ Bot Add Video
-                const botAddVideo = "";
+                // ✅ FIXED BOT VIDEO
+                const botAddVideo = "https://drive.google.com/uc?id=1rBczX9su4fDd1jtaT6_YyocwwFqzk6WF";
                 const videoPath = path.join(__dirname, "bot_add.mp4");
 
                 if (!fs.existsSync(videoPath)) {
-                    const file = await axios.get(botAddVideo, { responseType: "https://drive.google.com/uc?id=1rBczX9su4fDd1jtaT6_YyocwwFqzk6WF" });
-                    fs.writeFileSync(videoPath, file.data);
+                    try {
+                        const file = await axios.get(botAddVideo, {
+                            responseType: "arraybuffer"
+                        });
+                        fs.writeFileSync(videoPath, file.data);
+                    } catch (err) {
+                        console.log("Bot video download failed:", err.message);
+                    }
                 }
 
                 return message.send({
@@ -53,9 +62,12 @@ module.exports = {
                 });
             }
 
-            // 🔥 MEMBER ADD হলে
+            // 🔥 MEMBER ADD
             if (!global.temp.welcomeEvent[threadID])
-                global.temp.welcomeEvent[threadID] = { joinTimeout: null, dataAddedParticipants: [] };
+                global.temp.welcomeEvent[threadID] = {
+                    joinTimeout: null,
+                    dataAddedParticipants: []
+                };
 
             global.temp.welcomeEvent[threadID].dataAddedParticipants.push(...added);
             clearTimeout(global.temp.welcomeEvent[threadID].joinTimeout);
@@ -75,7 +87,7 @@ module.exports = {
                     mentions.push({ tag: u.fullName, id: u.userFbId });
                 }
 
-                if (names.length === 0) return;
+                if (!names.length) return;
 
                 let welcomeMsg = threadInfo.data.welcomeMessage || getLang("defaultWelcomeMessage");
                 const multi = names.length > 1;
@@ -85,13 +97,19 @@ module.exports = {
                     .replace(/\{boxName\}|\{threadName\}/g, threadInfo.threadName)
                     .replace(/\{multiple\}/g, multi ? "আপনারা" : "আপনি");
 
-                // ▶ Member Add Video
+                // ✅ MEMBER VIDEO FIXED
                 const memberVideo = "https://drive.google.com/uc?id=1XX4YGkqIpgocvMOEz_CbHI5XFvDSptVw";
                 const videoPath = path.join(__dirname, "member_add.mp4");
 
                 if (!fs.existsSync(videoPath)) {
-                    const file = await axios.get(memberVideo, { responseType: "arraybuffer" });
-                    fs.writeFileSync(videoPath, file.data);
+                    try {
+                        const file = await axios.get(memberVideo, {
+                            responseType: "arraybuffer"
+                        });
+                        fs.writeFileSync(videoPath, file.data);
+                    } catch (err) {
+                        console.log("Member video download failed:", err.message);
+                    }
                 }
 
                 message.send({
