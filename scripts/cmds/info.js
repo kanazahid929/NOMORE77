@@ -20,7 +20,7 @@ module.exports = {
       // NO PREFIX TRIGGER
       if (event.body?.toLowerCase() !== "info") return;
 
-      const imageUrl = "https://files.catbox.moe/4qc08p.jpg";
+      const imageUrl = "https://drive.google.com/file/d/1k4_a-Tt2rCLw66h0iZRNSJ2kyBmyorwe/view?usp=drivesdk";
       const imgPath = path.join(__dirname, "info.jpg");
 
       // Download image and save
