@@ -1,98 +1,55 @@
-const { getTime, drive } = global.utils;
+const axios = require("axios");
+const fs = require("fs");
+const path = require("path");
+
+const LEAVE_MESSAGE = `
+📦 গ্রুপ: {threadName} থেকে🏴🦅
+👤 ━━━━━━━━━━━━━━━━❗❗মিস্টার\n\n {userName} লিভ নিয়েছে 🏴 তবে সেটা বড় বিষয় না কারো জন্য গ্রুপ থেমে থাকে না তোমার জন্য এক বালতি সমবেদনা😑😎\n\n━━━━━━━━━━━━━━━━💀🚩
+`;
+
+const LEAVE_VIDEO_URL = "https://files.catbox.moe/mtrnr9.mp4";
 
 module.exports = {
-	config: {
-		name: "leave",
-		version: "1.4",
-		author: "NTKhang",
-		category: "events"
-	},
+  config: {
+    name: "leave",
+    version: "3.1",
+    author: "SAIF + Siyam Edit",
+    category: "events"
+  },
 
-	langs: {
-		vi: {
-			session1: "sáng",
-			session2: "trưa",
-			session3: "chiều",
-			session4: "tối",
-			leaveType1: "tự rời",
-			leaveType2: "bị kick",
-			defaultLeaveMessage: "{userName} đã {type} khỏi nhóm"
-		},
-		en: {
-			session1: "morning",
-			session2: "noon",
-			session3: "afternoon",
-			session4: "evening",
-			leaveType1: "left",
-			leaveType2: "was kicked from",
-			defaultLeaveMessage: "{userName} {type} the group"
-		}
-	},
+  onStart: async ({ threadsData, message, event, api, usersData }) => {
+    if (event.logMessageType !== "log:unsubscribe") return;
 
-	onStart: async ({ threadsData, message, event, api, usersData, getLang }) => {
-		if (event.logMessageType == "log:unsubscribe")
-			return async function () {
-				const { threadID } = event;
-				const threadData = await threadsData.get(threadID);
-				if (!threadData.settings.sendLeaveMessage)
-					return;
-				const { leftParticipantFbId } = event.logMessageData;
-				if (leftParticipantFbId == api.getCurrentUserID())
-					return;
-				const hours = getTime("HH");
+    const threadData = await threadsData.get(event.threadID);
+    if (!threadData?.settings?.sendLeaveMessage) return;
 
-				const threadName = threadData.threadName;
-				const userName = await usersData.getName(leftParticipantFbId);
+    const uid = event.logMessageData.leftParticipantFbId;
+    if (uid == api.getCurrentUserID()) return;
 
-				// {userName}   : name of the user who left the group
-				// {type}       : type of the message (leave)
-				// {boxName}    : name of the box
-				// {threadName} : name of the box
-				// {time}       : time
-				// {session}    : session
+    const userName = await usersData.getName(uid);
+    const threadName = threadData.threadName || "Unknown Group";
 
-				let { leaveMessage = getLang("defaultLeaveMessage") } = threadData.data;
-				const form = {
-					mentions: leaveMessage.match(/\{userNameTag\}/g) ? [{
-						tag: userName,
-						id: leftParticipantFbId
-					}] : null
-				};
+    const body = LEAVE_MESSAGE
+      .replace("{userName}", userName)
+      .replace("{threadName}", threadName);
 
-				leaveMessage = leaveMessage
-					.replace(/\{userName\}|\{userNameTag\}/g, userName)
-					.replace(/\{type\}/g, leftParticipantFbId == event.author ? getLang("leaveType1") : getLang("leaveType2"))
-					.replace(/\{threadName\}|\{boxName\}/g, threadName)
-					.replace(/\{time\}/g, hours)
-					.replace(/\{session\}/g, hours <= 10 ?
-						getLang("session1") :
-						hours <= 12 ?
-							getLang("session2") :
-							hours <= 18 ?
-								getLang("session3") :
-								getLang("session4")
-					);
+    // 🎥 download video
+    const videoPath = path.join(__dirname, "leave.mp4");
+    const writer = fs.createWriteStream(videoPath);
 
-				form.body = leaveMessage;
+    const res = await axios({
+      url: LEAVE_VIDEO_URL,
+      method: "GET",
+      responseType: "stream"
+    });
 
-				if (leaveMessage.includes("{userNameTag}")) {
-					form.mentions = [{
-						id: leftParticipantFbId,
-						tag: userName
-					}];
-				}
+    res.data.pipe(writer);
 
-				if (threadData.data.leaveAttachment) {
-					const files = threadData.data.leaveAttachment;
-					const attachments = files.reduce((acc, file) => {
-						acc.push(drive.getFile(file, "stream"));
-						return acc;
-					}, []);
-					form.attachment = (await Promise.allSettled(attachments))
-						.filter(({ status }) => status == "fulfilled")
-						.map(({ value }) => value);
-				}
-				message.send(form);
-			};
-	}
+    writer.on("finish", () => {
+      message.send({
+        body,
+        attachment: fs.createReadStream(videoPath)
+      });
+    });
+  }
 };
