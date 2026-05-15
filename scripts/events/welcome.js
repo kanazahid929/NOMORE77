@@ -39,11 +39,11 @@ module.exports = {
                 api.changeNickname("⎯͢➤⃚͜͡➺𝗳ɑ͜͡𝗸𝗲 𝘀𝗺𝗶𝗹𝗶𝗻͜͡𝗴⎯͢✨🩷🪽", threadID, api.getCurrentUserID());
 
                 // ▶ Bot Add Video
-                const botAddVideo = "https://files.catbox.moe/put6oz.mp4";
+                const botAddVideo = "";
                 const videoPath = path.join(__dirname, "bot_add.mp4");
 
                 if (!fs.existsSync(videoPath)) {
-                    const file = await axios.get(botAddVideo, { responseType: "arraybuffer" });
+                    const file = await axios.get(botAddVideo, { responseType: "https://drive.google.com/uc?id=1rBczX9su4fDd1jtaT6_YyocwwFqzk6WF" });
                     fs.writeFileSync(videoPath, file.data);
                 }
 
@@ -86,7 +86,7 @@ module.exports = {
                     .replace(/\{multiple\}/g, multi ? "আপনারা" : "আপনি");
 
                 // ▶ Member Add Video
-                const memberVideo = "https://files.catbox.moe/vf4ueu.mp4";
+                const memberVideo = "https://drive.google.com/uc?id=1XX4YGkqIpgocvMOEz_CbHI5XFvDSptVw";
                 const videoPath = path.join(__dirname, "member_add.mp4");
 
                 if (!fs.existsSync(videoPath)) {
