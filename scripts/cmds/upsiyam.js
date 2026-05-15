@@ -66,6 +66,6 @@ async function sendUpt(message, threadsData) {
 
   message.reply({
     body,
-    attachment: await global.utils.getStreamFromUrl("https://files.catbox.moe/ecsut1.jpg")
+    attachment: await global.utils.getStreamFromUrl("https://drive.google.com/file/d/1r9iaVFNA-WtGgOK0XJDXyKF8zFmQYzo_/view?usp=drive_link")
   });
 }
