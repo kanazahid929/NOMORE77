@@ -19,17 +19,18 @@ module.exports = {
 	onChat: async function ({ event, message }) {
 		if (event.body && event.body.toLowerCase() === "os") {
 			const mediaLinks = [
-				"https://drive.google.com/file/d/1ed3BJ5v4bM5ImyznQcwu2OQl3funlebo/view?usp=drive_link",
-				"https://drive.google.com/file/d/1FObZqOdyJK0_SgXsXANTMrVfwSdy6ZMZ/view?usp=drive_link",
-				"https://drive.google.com/file/d/13A3Q6By8bd41kz_I8WfCJ3c7GvZvNuQP/view?usp=drive_link",
-				"https://drive.google.com/file/d/1jHKHvioZc4zNYAqsDwEsD5E-tSGKGTPw/view?usp=drive_link",
-				"https://drive.google.com/file/d/1cCJj9AXgHtQ_3aiyAIdynWm1UZyvhi68/view?usp=drive_link",
-				"https://drive.google.com/file/d/1xn5BEaDMjiayeCyFzRCB--ZPqvNvSA6n/view?usp=drive_link",
-				"https://drive.google.com/file/d/1jHKHvioZc4zNYAqsDwEsD5E-tSGKGTPw/view?usp=drive_link",
-				"https://drive.google.com/file/d/1FObZqOdyJK0_SgXsXANTMrVfwSdy6ZMZ/view?usp=drive_link",
-				"https://drive.google.com/file/d/1FObZqOdyJK0_SgXsXANTMrVfwSdy6ZMZ/view?usp=drive_link",
-				"https://drive.google.com/file/d/1FObZqOdyJK0_SgXsXANTMrVfwSdy6ZMZ/view?usp=drive_link"
-			];
+
+				"https://drive.google.com/uc?id=ed3BJ5v4bM5ImyznQcwu2OQl3funlebo",
+"https://drive.google.com/uc?id=1FObZqOdyJK0_SgXsXANTMrVfwSdy6ZMZ",
+"https://drive.google.com/uc?id=13A3Q6By8bd41kz_I8WfCJ3c7GvZvNuQP",
+"https://drive.google.com/uc?id=1jHKHvioZc4zNYAqsDwEsD5E-tSGKGTPw",
+"https://drive.google.com/uc?id=1cCJj9AXgHtQ_3aiyAIdynWm1UZyvhi68",
+"https://drive.google.com/uc?id=1xn5BEaDMjiayeCyFzRCB--ZPqvNvSA6n",
+"https://drive.google.com/uc?id=1jHKHvioZc4zNYAqsDwEsD5E-tSGKGTPw",
+"https://drive.google.com/uc?id=1FObZqOdyJK0_SgXsXANTMrVfwSdy6ZMZ",
+"https://drive.google.com/uc?id=1FObZqOdyJK0_SgXsXANTMrVfwSdy6ZMZ",
+"https://drive.google.com/uc?id=1FObZqOdyJK0_SgXsXANTMrVfwSdy6ZMZ"
+						];
 
 			const randomLink = mediaLinks[Math.floor(Math.random() * mediaLinks.length)];
 			const fileName = path.basename(randomLink);
