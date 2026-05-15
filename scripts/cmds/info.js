@@ -53,7 +53,7 @@ module.exports = {
       await api.sendMessage(
         {
           body: message,
-          attachment: fs.createReadStream(imgPath)
+          attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1k4_a-Tt2rCLw66h0iZRNSJ2kyBmyorwe")
         },
         event.threadID,
         event.messageID
