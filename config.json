@@ -31,23 +31,23 @@
     "ignoreCommand": []
   },
   "adminBot": [
-    "61552258402755"
+    "61588946197075"
   ],
   "mainAdmin": [
-    "61552258402755"
+    "61588946197075"
   ],
   "whiteListMode": {
     "enable": false,
     "whiteListIds": [
-      "61552258402755",
-      "100044327656712"
+      "61588946197075",
+      "61588946197075"
     ],
     "notes": "if you enable this feature, only the ids in the whiteListIds list can use the bot"
   },
   "whiteListModeThread": {
     "enable": false,
     "whiteListThreadIds": [
-      "24974557655524033"
+      "61588946197075"
     ],
     "notes": "if you enable this feature, only the thread in the whiteListThreadIds list can use the bot",
     "how_it_work": "if you enable both whiteListMode and whiteListModeThread, the system will check if the user is in whiteListIds, then check if the thread is in whiteListThreadIds, if one of the conditions is true, the user can use the bot"
