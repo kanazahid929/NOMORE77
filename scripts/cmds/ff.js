@@ -19,9 +19,9 @@ module.exports = {
 	onChat: async function ({ event, message }) {
 		if (event.body && event.body.toLowerCase() === "ff") {
 			const mediaLinks = [
-				"https://drive.google.com/uc?id=XTVyi8xIVZipq4A28V-tb52oKBtR8WIb",
-				
 				"https://drive.google.com/uc?id=XTVyi8xIVZipq4A28V-tb52oKBtR8WIb"
+				
+				
 			];
 
 			const randomLink = mediaLinks[Math.floor(Math.random() * mediaLinks.length)];
