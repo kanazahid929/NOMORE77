@@ -17,15 +17,13 @@ module.exports = {
 
   onChat: async function ({ api, event }) {
     try {
-      // NO PREFIX TRIGGER
       if (event.body?.toLowerCase() !== "info") return;
 
-      const imageUrl = "https://files.catbox.moe/4qc08p.jpg";
-      const imgPath = path.join(__dirname, "info.jpg");
+      const videoUrl = "https://drive.google.com/uc?id=14FP-xkjNbG8nE82MRKqI_JLIk-vp2CcJ";
+      const videoPath = path.join(__dirname, "info.mp4");
 
-      // Download image and save
-      const response = await axios.get(imageUrl, { responseType: "arraybuffer" });
-      fs.writeFileSync(imgPath, Buffer.from(response.data));
+      const response = await axios.get(videoUrl, { responseType: "arraybuffer" });
+      fs.writeFileSync(videoPath, Buffer.from(response.data));
 
       const message = `
 ╭─━━━❖🫧❖━━━─╮
@@ -53,14 +51,15 @@ module.exports = {
       await api.sendMessage(
         {
           body: message,
-          attachment: fs.createReadStream(imgPath)
+          attachment: fs.createReadStream(videoPath)
         },
         event.threadID,
         event.messageID
       );
 
-      // React on trigger message
       api.setMessageReaction("🖤", event.messageID, () => {}, true);
+
+      fs.unlinkSync(videoPath);
 
     } catch (e) {
       console.error(e);
