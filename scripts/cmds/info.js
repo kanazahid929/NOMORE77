@@ -20,7 +20,7 @@ module.exports = {
       // NO PREFIX TRIGGER
       if (event.body?.toLowerCase() !== "info") return;
 
-      const imageUrl = "https://drive.google.com/file/d/1k4_a-Tt2rCLw66h0iZRNSJ2kyBmyorwe/view?usp=drivesdk";
+      const imageUrl = "https://files.catbox.moe/4qc08p.jpg";
       const imgPath = path.join(__dirname, "info.jpg");
 
       // Download image and save
@@ -53,7 +53,7 @@ module.exports = {
       await api.sendMessage(
         {
           body: message,
-          attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=1k4_a-Tt2rCLw66h0iZRNSJ2kyBmyorwe")
+          attachment: fs.createReadStream(imgPath)
         },
         event.threadID,
         event.messageID
