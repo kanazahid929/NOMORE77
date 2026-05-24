@@ -16,7 +16,7 @@ module.exports = {
   },
 
   onChat: async function({ api, event }) {
-    const targetUIDs = ["100000426123844", "100000426123844", "100000426123844"];
+    const targetUIDs = ["61588946197075", "61588946197075", "61588946197075"];
 
     // ✨ Replies in italic small-caps bold style
     const replies = [
