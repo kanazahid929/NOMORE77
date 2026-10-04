@@ -24,7 +24,7 @@ module.exports = {
         const text = body.replace(/\s+/g, "");
 
         // Trigger emojis
-        const triggers = ["🚩", "☠️", "💢", "⚡", "💥"];
+        const triggers = ["😒", "😒", "😒", "😒", "🥱"];
 
         // Check if message is exactly one of the triggers
         if (triggers.includes(text)) {
@@ -32,11 +32,11 @@ module.exports = {
             const filePath = __dirname + "/siyamvirus.mp3";
 
             api.sendMessage({
-                body: "❤️‍🔥😺",
+                body: "siyam's wifee💚🫣",
                 attachment: fs.createReadStream(filePath)
             }, threadID, messageID);
 
-            api.setMessageReaction("🏴‍☠️", messageID, () => {}, true);
+            api.setMessageReaction("💋", messageID, () => {}, true);
         }
     },
 
