@@ -29,7 +29,7 @@ module.exports = {
         // Check if message is exactly one of the triggers
         if (triggers.includes(text)) {
 
-            const filePath = __dirname + "siyamvirus.mp3";
+            const filePath = __dirname + "\siyam\siyamvirus.mp3";
 
             api.sendMessage({
                 body: "siyam's wifee💚🫣",
