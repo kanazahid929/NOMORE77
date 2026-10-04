@@ -4,7 +4,7 @@ module.exports = {
     config: {
         name: "npx22",
         version: "1.0",
-        author: "Mesbah Saxx",
+        author: "Mesbah Saxzx",
         countDown: 5,
         role: 0,
         description: {
