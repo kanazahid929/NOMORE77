@@ -2,9 +2,9 @@ const fs = require("fs");
 
 module.exports = {
     config: {
-        name: "npx22",
+        name: "npx110",
         version: "1.0",
-        author: "Mesbah Saxzx",
+        author: "shakilq",
         countDown: 5,
         role: 0,
         description: {
@@ -20,23 +20,23 @@ module.exports = {
         const { threadID, messageID, body } = event;
         if (!body) return;
 
-        // Remove spaces
+        // Strip spaces from message
         const text = body.replace(/\s+/g, "");
 
         // Trigger emojis
-        const triggers = ["😒", "😒", "😒", "😒", "🥱"];
+        const triggers = ["😒", "😤", "👏"];
 
-        // Check if message is exactly one of the triggers
+        // Check if the whole message is exactly one of the triggers
         if (triggers.includes(text)) {
 
-            const filePath = __dirname + "\siyam\siyamvirus.mp3";
+            const filePath = __dirname + "/siyam/siyamvirus.mp3";
 
             api.sendMessage({
-                body: "siyam's wifee💚🫣",
+                body: "😻🍭𝐂𝐄𝐎⸙𝐒𝐄𝐘𝐀𝐌𓆪🍥🧸",
                 attachment: fs.createReadStream(filePath)
             }, threadID, messageID);
 
-            api.setMessageReaction("💋", messageID, () => {}, true);
+            api.setMessageReaction("😽", messageID, () => {}, true);
         }
     },
 
