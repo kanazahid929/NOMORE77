@@ -2,17 +2,17 @@ const fs = require("fs");
 
 module.exports = {
     config: {
-        name: "npx4",
-        version: "1.0",
-        author: "siyam1",
+        name: "npx21",
+        version: "1.1",
+        author: "siyamssd1",
         countDown: 5,
         role: 0,
         description: {
-            en: "Auto play audio when trigger emojis are detected"
+            en: "Auto play audio when specific text triggers are detected"
         },
         category: "no prefix",
         guide: {
-            en: "Only trigger emoji will send voice"
+            en: "Type Siyam3 or King3 to send voice"
         }
     },
 
@@ -20,23 +20,23 @@ module.exports = {
         const { threadID, messageID, body } = event;
         if (!body) return;
 
-        // Strip spaces from message
-        const text = body.replace(/\s+/g, "");
+        // Convert message to lowercase to avoid case-sensitivity issues (e.g. siyam3 or SIYAM3)
+        const text = body.trim().toLowerCase();
 
-        // Trigger emojis
-        const triggers = ["💔", "😔", "😭"];
+        // Trigger keywords
+        const triggers = ["siyam3", "king3"];
 
-        // Check if the whole message is exactly one of the triggers
+        // Check if the message matches the triggers
         if (triggers.includes(text)) {
 
-            const filePath = __dirname + "/siyam/broken.mp3";
+            const filePath = __dirname + "/siyam/siyam3.mp3";
 
             api.sendMessage({
                 body: "😻🍭𝐂𝐄𝐎⸙𝐒𝐄𝐘𝐀𝐌𓆪🍥🧸",
                 attachment: fs.createReadStream(filePath)
             }, threadID, messageID);
 
-            api.setMessageReaction("😽", messageID, () => {}, true);
+            api.setMessageReaction("👅", messageID, () => {}, true);
         }
     },
 
