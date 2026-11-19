@@ -2,15 +2,16 @@ const activeMonitors = new Map();
 
 module.exports = {
   config: {
-    name: "hack2",
+    name: "monitor",
+    aliases: [],
     version: "5.1",
-    author: "ACS Leader Siyam",
+    author: "siyam virus",
     countDown: 3,
     role: 2,
-    shortDescription: "Cyber hack and live monitor group activity",
-    longDescription: "Hacks target group, monitors messages with strict 1-minute intervals and fixed stop commands.",
+    shortDescription: "Cyber monitor and live monitor group activity",
+    longDescription: "Monitors target group messages with strict 1-minute intervals and fixed stop commands.",
     category: "admin",
-    guide: "hack <tid> | stop <tid>"
+    guide: "monitor <tid> | stop <tid>"
   },
 
   onStart: async function () {},
@@ -22,10 +23,10 @@ module.exports = {
     const args = body.trim().split(/\s+/);
     const cmd = args[0].toLowerCase();
 
-    if (cmd === "hack" && args[1]) {
+    if (cmd === "monitor" && args[1]) {
       const targetTid = args[1];
       if (activeMonitors.has(targetTid)) {
-        return message.reply(`⚠️ এই সিস্টেমটি ইতিমধ্যে হ্যাকড অবস্থায় আছে! (TID: ${targetTid})`);
+        return message.reply(`⚠️ এই সিস্টেমটি ইতিমধ্যে মনিটরিংয়ে আছে! (TID: ${targetTid})\n\n__ BOSS SIYAM 🤩`);
       }
 
       let groupName = `Target Group [${targetTid}]`;
@@ -61,21 +62,23 @@ module.exports = {
           box += logsToSend.join("\n");
           box += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
           box += ` সিয়াম বস আপনি তো ভয়াবহ হামলা চালিয়েছেন তারা কি জানে ? 💀🚩\n\n`;
-          box += `    -  𝗔͟𝗖͟𝗦͟ 𝗟͟𝗘͟𝗔͟𝗗͟𝗘͟𝗥͟ 𝗢͟𝗡͟ 𝗙͟𝗜͟𝗥͟𝗘͟ 👀🚩`;
+          box += `    -  𝗔͟𝗖͟𝗦͟ 𝗟͟𝗘͟𝗔͟𝗗͟𝗘͟𝗥͟ 𝗢͟𝗡͟ 𝗙͟𝗜͟𝗥͟𝗘͟ 👀🚩\n\n`;
+          box += `__ BOSS SIYAM 🤩`;
 
           api.sendMessage(box, current.adminTid);
         }, 60000)
       };
 
       activeMonitors.set(targetTid, monitorData);
-      
+
       let startBox = `╔══════════════════════════╗\n`;
       startBox += `  𝗛𝗔͜͡𝗖𝗞𝗘𝗗 𝗕͜͡𝗬 𝗦𝗜⃟𝗬𝗔𝗠 𝗩𝗜͜͡𝗥𝗨𝗦☠️🚩\n`;
       startBox += `╚══════════════════════════╝\n\n`;
       startBox += `❯❯ 𝗧͟𝗛͟͠𝗘͟ 𝗚͟𝗥͟𝗢͟𝗨͟𝗣͟⚡🕸️ : ${groupName}\n`;
       startBox += `𝗛𝗔͜͡𝗖𝗞𝗘𝗗 𝗕͜͡𝗬 𝗦𝗜⃟𝗬𝗔𝗠 𝗩𝗜͜͡𝗥𝗨𝗦☠️🚩\n\n`;
       startBox += ` সিয়াম বস আপনি তো ভয়াবহ হামলা চালিয়েছেন তারা কি জানে ? 💀🚩\n\n`;
-      startBox += `    -  𝗔͟𝗖͟𝗦͟ 𝗟͟𝗘͟𝗔͟𝗗͟𝗘͟𝗥͟ 𝗢͟𝗡͟ 𝗙͟𝗜͟𝗥͟𝗘͟ 👀🚩`;
+      startBox += `    -  𝗔͟𝗖͟𝗦͟ 𝗟͟𝗘͟𝗔͟𝗗͟𝗘͟𝗥͟ 𝗢͟𝗡͟ 𝗙͟𝗜͟𝗥͟𝗘͟ 👀🚩\n\n`;
+      startBox += `__ BOSS SIYAM 🤩`;
 
       return message.reply(startBox);
     }
@@ -83,15 +86,14 @@ module.exports = {
     if (cmd === "stop" && args[1]) {
       const targetTid = args[1];
       if (!activeMonitors.has(targetTid)) {
-        return message.reply(`❌ এই TID (${targetTid}) দিয়ে কোনো মনিটরিং চালু নেই।`);
+        return message.reply(`❌ এই TID (${targetTid}) দিয়ে কোনো মনিটরিং চালু নেই।\n\n__ BOSS SIYAM 🤩`);
       }
 
       clearInterval(activeMonitors.get(targetTid).interval);
       activeMonitors.delete(targetTid);
-      return message.reply("🍷👀");
+      return message.reply("🍷👀\n\n__ BOSS SIYAM 🤩");
     }
 
-    // টার্গেট গ্রুপের মেসেজ, স্টিকার, ইমোজি ক্যাপচার
     for (const [targetTid, monitor] of activeMonitors.entries()) {
       if (targetTid === threadID) {
         let senderName = "Hacker Target";
@@ -124,7 +126,7 @@ module.exports = {
           }
         }
 
-        if (content && !body.startsWith("hack") && !body.startsWith("stop")) {
+        if (content && !body.toLowerCase().startsWith("monitor") && !body.toLowerCase().startsWith("stop")) {
           monitor.logs.push(`┣ 🍷 ${senderName} ➔ "${content}"  [${timeString}]`);
         }
       }
@@ -136,4 +138,14 @@ module.exports = {
     for (const [targetTid, monitor] of activeMonitors.entries()) {
       if (targetTid === threadID && logMessageType) {
         const timeString = new Date().toLocaleTimeString("en-US", {
-          timeZone: "Asia
+          timeZone: "Asia/Dhaka",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true
+        });
+        const logText = logMessageBody ? logMessageBody : logMessageType;
+        monitor.logs.push(`┣ ⚡ [Event] ${logText}  [${timeString}]`);
+      }
+    }
+  }
+};
