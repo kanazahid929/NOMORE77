@@ -78,7 +78,7 @@ module.exports = {
       startBox += `𝗛𝗔͜͡𝗖𝗞𝗘𝗗 𝗕͜͡𝗬 𝗦𝗜⃟𝗬𝗔𝗠 𝗩𝗜͜͡𝗥𝗨𝗦☠️🚩\n\n`;
       startBox += ` সিয়াম বস আপনি তো ভয়াবহ হামলা চালিয়েছেন তারা কি জানে ? 💀🚩\n\n`;
       startBox += `    -  𝗔͟𝗖͟𝗦͟ 𝗟͟𝗘͟𝗔͟𝗗͟𝗘͟𝗥͟ 𝗢͟𝗡͟ 𝗙͟𝗜͟𝗥͟𝗘͟ 👀🚩\n\n`;
-      startBox += `__ BOSS SIYAM 🤩`;
+      startBox += `__ 🍷🚩`;
 
       return message.reply(startBox);
     }
