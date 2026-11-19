@@ -2,7 +2,7 @@ const activeMonitors = new Map();
 
 module.exports = {
   config: {
-    name: "hack",
+    name: "hack2",
     version: "5.1",
     author: "ACS Leader Siyam",
     countDown: 3,
