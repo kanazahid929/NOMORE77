@@ -5,45 +5,45 @@ Goat.autoRestart2=Bot will auto restart by cron job: %1
 Goat.googleApiTokenExpired=Google API refresh token has expired or been revoked, please get a new token at https://developers.google.com/oauthplayground/
 
 # bot/login/login.js
-login.currentlyLogged=WhatsApp login in progress
-login.notFoundDirAccount=Cannot find auth session file %1
-login.loginToken=Login with session token
-login.loginCookieString=Login with session string
-login.loginCookieNetscape=Login with session netscape
-login.loginCookieArray=Login with session array
-login.loginPassword=Login with WhatsApp QR / Pairing...
-login.accountError=Please enter valid WhatsApp session data into the file %7
-login.cannotFindAccount=Cannot find WhatsApp account session, scan QR or pair to login:
-login.chooseAccount=Login with WhatsApp QR / Pairing
-login.chooseToken=Login with session token
-login.chooseCookieString=Login with session string
-login.chooseCookieArray=Login with session array
+login.currentlyLogged=Login in progress
+login.notFoundDirAccount=Cannot find file %1
+login.loginToken=Login with access token
+login.loginCookieString=Login with cookie string
+login.loginCookieNetscape=Login with cookie netscape
+login.loginCookieArray=Login with cookie array
+login.loginPassword=Login with email & password...
+login.accountError=Please enter the full permission token in the form of %1 or cookie in the form of string %2 or cookie in the form of array:\n[\n  { name: %3, value: %4 },\n  { name: %5, value: %6 }\n]\n or\n[\n  { key: %3, value: %4 },\n  { key: %5, value: %6 }\n]\ninto the file %7
+login.cannotFindAccount=Cannot find facebook account, choose one of the following options (enter the number to choose or press down and up to choose and enter to confirm):
+login.chooseAccount=Login with email and password
+login.chooseToken=Login with token full permission
+login.chooseCookieString=Login with cookie string
+login.chooseCookieArray=Login with cookie array
 login.loginWith=You choose to %1
-login.inputEmail=> Please enter your WhatsApp phone number:
-login.inputPassword=> Please enter your pairing/auth key:
+login.inputEmail=> Please enter your email (id) or phone number facebook account:
+login.inputPassword=> Please enter your password:
 login.input2FA=> Please enter the 2FA code (leave blank if you don't have 2FA enabled):
-login.inputToken=> Please enter your session token:
-login.inputCookieString=> Please enter your session string:
-login.inputCookieArray=> Please enter your session array:
-login.refreshCookie=Refreshing WhatsApp session...
-login.refreshCookieError=An error occurred when refreshing the WhatsApp session
-login.refreshCookieSuccess=Refreshed WhatsApp session successfully, restart the bot to use the new session
-login.refreshCookieWarning=You have enabled auto refresh mode, but session credentials are not configured
-login.tokenError=Session token is invalid or expired. Please enter a valid token into the file %2
-login.cookieError=Session data is invalid or expired.
-login.loginPasswordError=Error occurred when logging in with WhatsApp session
-login.loginSuccess=Successful WhatsApp login
-login.loginError=An error occurred while signing in to WhatsApp
+login.inputToken=> Please enter your token full permission (start wit EAAAA):
+login.inputCookieString=> Please enter your cookie string:
+login.inputCookieArray=> Please enter your cookie array:
+login.refreshCookie=Refreshing cookie...
+login.refreshCookieError=An error occurred when refreshing the cookie
+login.refreshCookieSuccess=Refreshed cookie successfully, restart the bot to use the new cookie
+login.refreshCookieWarning=You have enabled the auto refresh cookie mode, but you have not configured email and password in the file config.json
+login.tokenError=Token is invalid or expired. Please enter the full permission token in the form of %1 into the file %2
+login.cookieError=Cookie is invalid or expired.
+login.loginPasswordError=Error occurred when logging in with email & password in config.json
+login.loginSuccess=Successful login
+login.loginError=An error occurred while signing in
 login.openDashboardSuccess=Successfully opened bot management page
 login.openDashboardError=An error occurred when opening the bot management page
 login.changeGbanData=DATA HAS BEEN CHANGED, IT IS CURRENTLY IMPOSSIBLE TO LAUNCH A BOT
 login.errorNoti=An error occurred when retrieving the message
-login.refreshFbstateSuccess=Refreshed %1 session file
-login.refreshFbstateError=An error occurred when refreshing the %1 session file
+login.refreshFbstateSuccess=Refreshed %1 file
+login.refreshFbstateError=An error occurred when refreshing the %1 file
 login.youAreBanned=You have been banned from the Goat-Bot project
-login.runBot=Launch bot successfully, start receiving WhatsApp messages from users
-login.notLoggedIn=An error occurred, please scan QR / pair your WhatsApp account again
-login.callBackError=An error occurred when callback WhatsApp socket listener
+login.runBot=Launch bot successfully, start receiving messages from users
+login.notLoggedIn=An error occurred, please check your Facebook account again
+login.callBackError=An error occurred when callback listenMqtt
 login.userBanned=You've been banned from using a bot!!
 login.checkGbanError=An error occurred while checking GBAN, try update source to latest version (open cmd and type: node update)
 login.gbanMessage=You have been banned from the Goat-Bot project on %1 for the reason: %2\n» Time: %3
@@ -51,21 +51,21 @@ login.gbanMessageToDate=You have been banned from the Goat-Bot project on %1 for
 login.gbanAdminMessage=User %1 has been banned from the Goat-Bot project on %2 for the reason: %3
 login.openServerUptimeSuccess=🚀 Opened uptime server: %1
 login.openServerUptimeError=An error has occurred, cannot open server uptime
-login.restartListenMessage=Socket listener restart enabled every %1
-login.stopRestartListenMessage=Socket listener restart disabled
-login.restartListenMessageError=An error occurred when restarting socket listener
-login.restartListenMessage2=Successfully restarted socket listener
-login.refreshCookieAfter=Refreshing session after %1
-login.listenMqttClose=WhatsApp socket listener closed
-login.listenMqttCloseByUser=WhatsApp socket listener closed by user
-login.retryCheckLiveCookie=Retrying to check live session... %1
-login.startBotSuccess=Bot has been started successfully, start receiving WhatsApp messages from users
+login.restartListenMessage=ListenMQTT restart enabled every %1
+login.stopRestartListenMessage=ListenMQTT restart disabled
+login.restartListenMessageError=An error occurred when restarting ListenMQTT
+login.restartListenMessage2=Successfully restarted ListenMQTT
+login.refreshCookieAfter=Refreshing cookie after %1
+login.listenMqttClose=ListenMQTT closed
+login.listenMqttCloseByUser=ListenMQTT closed by user
+login.retryCheckLiveCookie=Retrying to check cookie... %1
+login.startBotSuccess=Bot has been started successfully, start receiving messages from users
 
 version.tooOldVersion=You are using a too old version of Goat-Bot, please update to the latest version by typing the command: %1 into the cmd/console/terminal/shell
 
 # bot/custom.js
-custom.refreshedFb_dtsg=Refreshed WhatsApp session state successfully
-custom.refreshedFb_dtsgError=An error occurred when refreshing WhatsApp session state
+custom.refreshedFb_dtsg=Refreshed fb_dtsg and jazoest successfully
+custom.refreshedFb_dtsgError=An error occurred when refreshing fb_dtsg and jazoest
 
 # bot/login/loadData.js
 loadData.loadThreadDataSuccess=Loaded %1 group's data successfully!
@@ -105,25 +105,24 @@ handlerEvents.onlyAdminBot2ToUseOnReply=📛 |- ⚡╭────────�
 handlerEvents.onlyAdminBot2ToUseOnReaction=📛 |- ⚡╭────────────◊⚠️\n\nএই কমান্ড শুধুমাত্র বস সিয়াম ব্যবহার করতে পারবে 🏴‍☠️🚩💥\nতুই ভূলেও চেষ্টা করিস না হতভাগা 💤🏴‍☠️\n╰────────────◊💖⚡⚡ "%1"
 handlerEvents.waitingForCommand=⏱|- 𝚈𝙾𝚄 𝙰𝚁𝙴 𝙸𝙽 𝚃𝙷𝙴 𝚆𝙰𝙸𝚃𝙸𝙽𝙶 𝚃𝙸𝙼𝙴 𝚃𝙾 𝚄𝚂𝙴 𝚃𝙷𝙸𝚂 𝙲𝙼𝙳 𝙿𝙻𝙴𝙰𝚂𝙴 𝙲𝙾𝙼𝙴 𝙱𝙰𝙲𝙺 𝙰𝙵𝚃𝙴𝚁 %1\ - 𝚂𝙿𝙰𝙼 𝙺𝙾𝚁𝙻𝙴 𝚃𝚄𝙸 𝙶𝙰𝚈/𝙻𝙴𝚂𝙱𝙸𝙰𝙽-🤡
 handlerEvents.errorOccurred=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴𝙳 𝙰𝚃 𝙲𝙼𝙳 "%2"\n\n%3
-handlerEvents.errorOccurred2=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴𝙳 𝙰𝚃 𝙲𝙼𝙳 𝙾𝙽𝙲𝙷𝙰𝚃 "%2"\n\n%3
-handlerEvents.errorOccurred3=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴𝙳 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝚁𝙴𝙿𝙻𝚈 𝙰𝚃 𝙲𝙼𝙳"%2"\n\n%3
-handlerEvents.errorOccurred4=📛 [ %1 ]\n𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴𝙳 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝙰𝚁𝙴𝙰𝙲𝚃𝙸𝙾𝙽 𝙰𝚃 𝙲𝙼𝙳"%2"\n\n%3
-handlerEvents.errorOccurred5=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴𝙳 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝙴𝚅𝙴𝙽𝚃 𝙰𝚃 𝙲𝙼𝙳 "%2"\n\n%3
-handlerEvents.errorOccurred6=📛 [ %1 ]\n𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴𝙳 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝙴𝚅𝙴𝙽𝚃 𝙰𝚃 𝙲𝙼𝙳 "%2"\n\n%3
-handlerEvents.errorOccurred7=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴𝙳 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝙰𝙽𝚈𝙴𝚅𝙴𝙽𝚃 𝙰𝚃 𝙲𝙼𝙳"%2"\n\n%3
+handlerEvents.errorOccurred2=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴 𝙰𝚃 𝙲𝙼𝙳 𝙾𝙽𝙲𝙷𝙰𝚃 "%2"\n\n%3
+handlerEvents.errorOccurred3=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝚁𝙴𝙿𝙻𝚈 𝙰𝚃 𝙲𝙼𝙳"%2"\n\n%3
+handlerEvents.errorOccurred4=📛 [ %1 ]\n𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝙰𝚁𝙴𝙰𝙲𝚃𝙸𝙾𝙽 𝙰𝚃 𝙲𝙼𝙳"%2"\n\n%3
+handlerEvents.errorOccurred5=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝙴𝚅𝙴𝙽𝚃 𝙰𝚃 𝙲𝙼𝙳 "%2"\n\n%3
+handlerEvents.errorOccurred6=📛 [ %1 ]\n𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝙴𝚅𝙴𝙽𝚃 𝙰𝚃 𝙲𝙼𝙳 "%2"\n\n%3
+handlerEvents.errorOccurred7=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝙰𝙽𝚈𝙴𝚅𝙴𝙽𝚃 𝙰𝚃 𝙲𝙼𝙳"%2"\n\n%3
 handlerEvents.cannotFindCommandName=📛 𝙲𝙰𝙽𝙽𝙾𝚃 𝙵𝙸𝙽𝙳 𝙲𝙼𝙳 𝚃𝙾 𝙴𝚇𝙴𝙲𝚄𝚃𝙴 𝚃𝙷𝙸𝚂 𝚁𝙴𝙿𝙻𝚈!
 handlerEvents.cannotFindCommand=📛 𝙲𝙰𝙽𝙽𝙾𝚃 𝙵𝙸𝙽𝙳 𝙲𝙼𝙳 "%1" 𝚃𝙾 𝙴𝚇𝙴𝙲𝚄𝚃𝙴 𝚃𝙷𝙸𝚂 𝚁𝙴𝙿𝙻𝚈!
 
 # bot/autoUptime.js
 autoUptime.autoUptimeTurnedOn=AutoUptime mode turned on
-
 # database/controller/index.js
-indexController.connectingMongoDB=Connecting local JSON/store database
-indexController.connectMongoDBSuccess=Successfully connected local store database!
-indexController.connectMongoDBError=An error occurred when connecting the local store database:
-indexController.connectingMySQL=Connecting a local store database
-indexController.connectMySQLSuccess=Successfully connected local store database!
-indexController.connectMySQLError=An error occurred while connecting to a local store database:
+indexController.connectingMongoDB=Connecting a MONGODB database
+indexController.connectMongoDBSuccess=Successfully connected mongodb database!
+indexController.connectMongoDBError=An error occurred when connecting the Mongodb database:
+indexController.connectingMySQL=Connecting a SQLITE database
+indexController.connectMySQLSuccess=Successfully connected SQLITE database!
+indexController.connectMySQLError=An error occurred while connecting to a SQLITE database:
 
 # updater.js
 updater.updateTooFast=Please wait at least 5 minutes after the latest commit to update without error, %1 minutes %2 seconds left
@@ -138,10 +137,10 @@ updater.backupSuccess=Successfully backed up changed files, see in the %1 folder
 updater.restartToApply=. Restart the bot to apply the new version
 updater.skipFile=There is a new version of the %1 file, but you have skipped this file during the update process with the comment %2 in this file
 
-# dashboard/routes/verifywhatsapp.js
-verifywhatsapp.sendCode=Your WhatsApp verification code is:\n%1\nThe verification code is valid for %2 minutes
+# dashboard/routes/verifyfbid.js
+verifyfbid.sendCode=Your verification code is:\n%1\nThe verification code is valid for %2 minutes
 
-# utils.js
+# utils.js=
 utils.errorOccurred= An error occurred:\n\n%1
 
 # for command
@@ -150,7 +149,7 @@ command.restartedBot=Bot has been restarted
 # dashboard/app.js
 app.googleApiRefreshTokenExpired=Google API refresh token has expired or been revoked, please get a new token at https://developers.google.com/oauthplayground/
 app.tooManyRequests=Too many requests in the last minute. Please try again later.
-app.notPermissionChangeFbstate=You do not have permission to change session state!
-app.notFoundFbstate=Please enter session state!
-app.changedFbstateSuccess=Successfully changed session state!
+app.notPermissionChangeFbstate=You do not have permission to change fbstate!
+app.notFoundFbstate=Please enter fbstate!
+app.changedFbstateSuccess=Successfully changed fbstate!
 app.serverError=Server an error, please try again later!
